@@ -51,7 +51,7 @@ app.get('/area', utility.checkToken, async (req: Request, res: Response) => {
         res.status(202).send({resultsUrl: `${server}/area-result/2152f96f-50c7-4d76-9e18-f7033bd14428`});
 
         const from: string = req.query.from as string;
-        const distance: number = +(req.query.distance as string); // cast to int
+        const distance: number = +(req.query.distance as string); // cast to num
         utility.getCitiesWithinDist(data.cities, from, distance);
 
     } catch (error) {
