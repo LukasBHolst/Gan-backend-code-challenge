@@ -43,10 +43,10 @@ export function filterJSONData(cities: City[], tag: string, isActive: string): C
         throw new Error('Missing parameter: either tag or isActive');
 
     if (tag)
-        cities = cities.filter((city: any) => city.tags.includes(tag));
+        cities = cities.filter((city: City) => city.tags.includes(tag));
 
     if (isActive)
-        cities = cities.filter((city: any) => city.isActive.toString() === isActive);
+        cities = cities.filter((city: City) => city.isActive.toString() === isActive);
 
     return { cities: cities };
 }
@@ -88,7 +88,7 @@ export function getDistanceFromCities(cities: City[], from: string, to: string):
 export function getCitiesWithinDist(cities: City[], from: string, distance: number) {
     accumulatedCities = [];
     const cityFrom = getCityFromGuid(cities, from);
-    cities.forEach((cityTo: any) => {
+    cities.forEach((cityTo: City) => {
         if (cityTo.guid !== cityFrom.guid && calculateDistance(cityFrom, cityTo) < distance)
             accumulatedCities.push(cityTo);
     })
